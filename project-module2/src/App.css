@@ -1,0 +1,19 @@
+.carrusel-caption {
+  background-color: rgba(
+    219,
+    219,
+    219,
+    0.5
+  );
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: white;
+  max-width: 60%;
+  margin: auto;
+}
+
+.img-museoCard {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
