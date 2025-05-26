@@ -4,15 +4,17 @@ import Col from "react-bootstrap/Col";
 import MuseumsCards from "./MuseumsCards";
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
+import "../../App.css"
 
 function ExploreMuseums() {
   const [museos, setMuseos] = useState([]);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
-
+  console.log(museos)
   useEffect(() => {
     fetch("http://localhost:5005/museos")
       .then((response) => response.json())
       .then((data) => {
+          console.log(data)
         setMuseos(data);
       })
       .catch((err) => {
@@ -33,12 +35,12 @@ function ExploreMuseums() {
         categoriasSeleccionadas.includes(museo.categoria)
       );
 
-
+console.log('Museos filtrados:', museosFiltrados);
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col xs={12} md={3}>
+      <Container fluid >
+        <Row style={{margin: "30px"}}>
+          <Col xs={12} md={3} className="sidebar-filters">
             <Sidebar
               categoriasSeleccionadas={categoriasSeleccionadas}
               categorias={categoriasUnicas}
@@ -46,8 +48,8 @@ function ExploreMuseums() {
             />
           </Col>
 
-          <Col xs={12} md={9}>
-            <MuseumsCards museos={museosFiltrados} />
+          <Col xs={12} md={9} className="museums-cards">
+            <MuseumsCards dataMuseos={museos} museos={museosFiltrados} setMuseos={setMuseos} />
           </Col>
         </Row>
       </Container>

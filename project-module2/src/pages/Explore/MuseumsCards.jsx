@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import "../../App.css"
 
 function MuseumsCards(props) {
-  console.log(props);
+  console.log('Museos filtrados:', props.museos);
   /*Creamos aquí cada una de las cartas con .map, 
     y cada una de ellas tienen un botón de ver más info
     que nos lleva a (link to:) MuseumDetails */

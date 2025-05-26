@@ -2,11 +2,12 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+
 function Sidebar(props) {
 
   const handleCategoriaCheck = (event) => {
     const categoria = event.target.value;
-    
+
     if(event.target.checked) {
       props.setCategoriasSeleccionadas([...props.categoriasSeleccionadas, categoria])
     }else {
