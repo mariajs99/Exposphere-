@@ -6,6 +6,7 @@ import MyNavbar from "./components/MyNavbar";
 import ExploreMuseums from "./pages/Explore/ExploreMuseums";
 import MuseumDetails from "./pages/MuseumDetails/MuseumDetails";
 import AddMuseum from "./pages/AddMuseum";
+import EditMuseum from "./pages/EditMuseum";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/explorar" element={<ExploreMuseums />} />
         <Route path="/detalles/:id" element={<MuseumDetails />} />
         <Route path="/añadirMuseo" element={<AddMuseum/>} />
+        <Route path="/detalles/editar/:id" element={<EditMuseum/>}/>
       </Routes>
 
       <MyFooter />

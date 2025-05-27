@@ -20,7 +20,7 @@ const [museo, setMuseo] = useState(null);
         `${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`
       );
       setMuseo(response.data);
-      console.log("Datos recibidos:", data);
+
     } catch (error) {
       console.error("Error al obtener detalles del museo:", error);
     }

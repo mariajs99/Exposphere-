@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+
 function MuseumDescription({ museo }) {
+
+
   if (!museo) {
     return <p>Cargando detalles del museo...</p>;
   }
@@ -11,6 +15,12 @@ function MuseumDescription({ museo }) {
       <p>{`Está ubicado en ${museo.ciudad}`}</p>
       <p>{`Horario de visita: ${museo.horario}`}</p>
       <p>{`Precio de la entrada: ${museo.precio}`}</p>
+
+      <Link to={`/detalles/${museo.id}/editar`}>
+      <button style={{ marginTop: "1rem" }}>
+        Editar museo
+      </button>
+      </Link>
     </div>
   );
 }

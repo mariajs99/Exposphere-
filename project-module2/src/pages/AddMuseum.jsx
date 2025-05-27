@@ -4,11 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddMuseum() {
-
   const navigate = useNavigate();
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [historia, setHistoria] = useState("");
   const [ciudad, setCiudad] = useState("");
   const [horario, setHorario] = useState("");
@@ -23,6 +23,7 @@ function AddMuseum() {
     const nuevoMuseo = {
       nombre,
       descripcion,
+      categoria,
       historia,
       ciudad,
       horario,
@@ -38,7 +39,7 @@ function AddMuseum() {
       .post(`${import.meta.env.VITE_SERVER_URL}/museos`, nuevoMuseo)
       .then(() => {
         alert("Museo creado correctamente");
-        navigate("/explorar"); 
+        navigate("/explorar");
       })
       .catch((error) => {
         console.log(error);
@@ -67,6 +68,15 @@ function AddMuseum() {
           />
         </Form.Group>
 
+        <Form.Group className="mb-3">
+          <Form.Label>Categoría</Form.Label>
+          <Form.Control
+            type="text"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+            required
+          />
+        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Historia</Form.Label>
           <Form.Control
