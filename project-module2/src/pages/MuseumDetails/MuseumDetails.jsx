@@ -28,11 +28,12 @@ const [museo, setMuseo] = useState(null);
 
   if (museo === null) {
     return <h3>...Buscando detalles del museo</h3>;
+
   }
     return(
         <>
             <MuseumDescription museo={museo}/>
-            <MuseumReviews/>
+            <MuseumReviews />
             <MuseumAddReview/>
             
         </>
