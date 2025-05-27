@@ -1,17 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Card, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { Button, Card } from "react-bootstrap";
 
 function MuseumReviews(props) {
+  const [likes, setLikes] = useState([]);
+
+  function darLike(index) {
+    if (likes.includes(index)) return;
+    setLikes([...likes, index]);
+  }
+
   if (!props.opiniones || props.opiniones.length === 0) {
-    return <h4>No hay opiniones para este museo.</h4>;
+    return <h4>Aún no hay opiniones de este museo.</h4>;
   }
 
   return (
     <div>
       <h3>Comentarios</h3>
-      {props.opiniones.map((cadaOpinion) => {
+      {props.opiniones.map((cadaOpinion, index) => {
+        let yaTieneLike = likes.includes(index);
+        let cantidadDeLikes = yaTieneLike ? 1 : 0;
         return (
           <Card key={cadaOpinion.id} className="mb-3">
             <Card.Body>
@@ -20,6 +27,15 @@ function MuseumReviews(props) {
                 Puntuación: {cadaOpinion.puntuacion} / 5
               </Card.Subtitle>
               <Card.Text>{cadaOpinion.comentario}</Card.Text>
+              <Button
+                variant="outline-primary"
+                onClick={function () {
+                  darLike(index);
+                }}
+                disabled={yaTieneLike}
+              >
+                👍 {cantidadDeLikes}
+              </Button>
             </Card.Body>
           </Card>
         );

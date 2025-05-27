@@ -18,7 +18,7 @@ useEffect(() => {
 const getData = async () => {
   try {
     const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/museos`);
-    console.log(response.data);
+
     setMuseos(response.data);
   } catch (error) {
     console.error("Error al obtener museos:", error);
@@ -39,7 +39,6 @@ const museosFiltrados =
         categoriasSeleccionadas.includes(museo.categoria)
       );
 
-console.log('Museos filtrados:', museosFiltrados);
   return (
     <>
       <Container fluid >
