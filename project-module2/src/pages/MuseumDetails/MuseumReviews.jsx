@@ -3,37 +3,15 @@ import { useEffect, useState } from "react";
 import { Card, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
-function MuseumReviews() {
-  const params = useParams();
-  const [opiniones, setOpiniones] = useState(null);
-
-
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_SERVER_URL}/opiniones`)
-      .then((response) => {
-        const todasLasOpiniones = response.data;
-        const opinionesFiltradas = todasLasOpiniones.filter((cadaOpinion) => {
-          return cadaOpinion.museoId === params.id;
-        });
-        setOpiniones(opinionesFiltradas);
-
-      })
-      .catch((error) => {
-        console.log(error);
-
-      });
-
-  }, []);
-
-  if (opiniones === null) {
-    return <h4>...Cargando opiniones</h4>;
+function MuseumReviews(props) {
+  if (!props.opiniones || props.opiniones.length === 0) {
+    return <h4>No hay opiniones para este museo.</h4>;
   }
 
   return (
     <div>
       <h3>Comentarios</h3>
-      {opiniones.map((cadaOpinion) => {
+      {props.opiniones.map((cadaOpinion) => {
         return (
           <Card key={cadaOpinion.id} className="mb-3">
             <Card.Body>

@@ -1,4 +1,88 @@
-function MuseumAddReview () {
+import axios from "axios";
+import { useState } from "react";
+
+function MuseumAddReview (props) {
+    const [usuario, setUsuario] = useState("");
+    const [comentario, setComentario] = useState("");
+    const [puntuacion, setPuntuacion] = useState("");
+
+    const handleReviewSubmit = async (event) => {
+        event.preventDefault();
+
+        const nuevaOpinion = {
+        usuario: usuario,
+        comentario: comentario,
+        puntuacion: Number(puntuacion),
+        museoId: props.museoId
+    };
+
+    
+    try {
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/opiniones`, nuevaOpinion)
+        alert("Opinión añadida correctamente");
+
+        props.actualizarOpiniones();
+        
+        setUsuario("")
+        setComentario("")
+        setPuntuacion("")
+
+    } catch (error) {
+        console.log(error)
+    }
+
+};
+
+return(
+    <div className="mt-5">
+      <div className="card shadow p-4">
+        <h4 className="mb-4">Añadir una opinión</h4>
+
+        <form onSubmit={handleReviewSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Tu nombre</label>
+            <input
+              type="text"
+              className="form-control"
+              value={usuario}
+              onChange={(event) => setUsuario(event.target.value)}
+              placeholder="Introduce tu nombre"
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Comentario</label>
+            <textarea
+              className="form-control"
+              rows="3"
+              value={comentario}
+              onChange={(event) => setComentario(event.target.value)}
+              placeholder="Escribe tu experiencia"
+              required
+            ></textarea>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Puntuación (0 a 5)</label>
+            <input
+              type="number"
+              className="form-control"
+              min="0"
+              max="5"
+              step="0.1"
+              value={puntuacion}
+              onChange={(event) => setPuntuacion(event.target.value)}
+              placeholder="4.5"
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn btn-success w-100">Enviar opinión</button>
+        </form>
+      </div>
+    </div>
+)
 
 }
 
