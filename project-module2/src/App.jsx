@@ -19,7 +19,7 @@ function App() {
         <Route path="/explorar" element={<ExploreMuseums />} />
         <Route path="/detalles/:id" element={<MuseumDetails />} />
         <Route path="/añadirMuseo" element={<AddMuseum/>} />
-        <Route path="/detalles/editar/:id" element={<EditMuseum/>}/>
+        <Route path="/detalles/:id/editar" element={<EditMuseum/>}/>
       </Routes>
 
       <MyFooter />

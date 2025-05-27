@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Container, Form, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 function EditMuseum() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
   const params = useParams();
 
   const navigate = useNavigate();
@@ -20,25 +27,37 @@ function EditMuseum() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_SERVER_URL}/detalles/${params.id}`)
+      .get(`${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`)
       .then((response) => {
-        console.log(response);
-        setNombre(response.nombre);
-        setDescripcion(response.descripcion);
-        setHistoria(response.historia);
-        setCiudad(response.setCiudad);
-        setHorario(response.horario);
-        setImagen(response.imagen);
-        setPrecio(response.precio);
-        setCategoria(response.categoria);
-        setLatitud(response.latitud);
-        setLongitud(response.setLongitud);
+        const data = response.data;
+        console.log(data);
+        setNombre(data.nombre || "");
+        setDescripcion(data.descripcion || "");
+        setHistoria(data.historia || "");
+        setCiudad(data.ciudad || "");
+        setHorario(data.horario || "");
+        setImagen(data.imagen || "");
+        setPrecio(data.precio || "");
+        setCategoria(data.categoria || "");
+        setLatitud(data.latitud || "");
+        setLongitud(data.longitud || "");
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+      const deleteMuseum = () => {
+      axios
+        .delete(`${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`)
+        .then(() => {
+          navigate(`/explorar`);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,25 +70,29 @@ function EditMuseum() {
       imagen,
       precio,
       categoria,
-      latitud,
-      longitud,
+      ubicacion: {
+        latitud,
+        longitud,
+      },
     };
 
     try {
       await axios.put(
-        `${import.meta.env.VITE_SERVER_URL}/detalles/${params.id}`
+        `${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`,
+        updatedMuseum
       );
       navigate(`/detalles/${params.id}`);
     } catch (error) {
       console.log(error);
     }
+
+
   };
+
   return (
     <div className="EditMuseumPage">
-      <h3>Edit the Project</h3>
-
       <Container className="mt-4">
-        <h2>Añadir nuevo museo</h2>
+        <h3>Editar museo</h3>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Nombre</Form.Label>
@@ -164,8 +187,34 @@ function EditMuseum() {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-          Editar museo
-        </Button>
+            Editar museo
+          </Button>
+          <Button variant="danger" onClick={handleShow}>
+            Borrar museo
+          </Button>
+          <Modal show={showModal} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Confirmar eliminación</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              ¿Seguro que quieres borrar este museo? Esta acción no se puede
+              deshacer.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancelar
+              </Button>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  deleteMuseum();
+                  handleClose();
+                }}
+              >
+                Sí, borrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Form>
       </Container>
     </div>
