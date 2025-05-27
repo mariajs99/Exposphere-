@@ -3,31 +3,32 @@ import MuseumAddReview from "./MuseumAddReview";
 import MuseumDescription from "./MuseumDescription"; 
 import MuseumReviews from "./MuseumReviews";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function MuseumDetails () {
-    const { id } = useParams();
-    const [museo, setMuseo] = useState(null);
 
+const params = useParams();
+const [museo, setMuseo] = useState(null);
 
-    useEffect(() => {
-        fetch(`http://localhost:5005/museos/${id}`)
-        .then((response) => response.json())
-        
-        .then((data) => {
+  useEffect(() => {
+    getData();
+  }, []);
 
-            setMuseo(data)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }, [id])
-
-    if(!museo) {
-        return <p>Cargando detalles del museo...</p>
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`
+      );
+      setMuseo(response.data);
+      console.log("Datos recibidos:", data);
+    } catch (error) {
+      console.error("Error al obtener detalles del museo:", error);
     }
-    
-    console.log("museo:", museo);
+  };
 
+  if (museo === null) {
+    return <h3>...Buscando detalles del museo</h3>;
+  }
     return(
         <>
             <MuseumDescription museo={museo}/>

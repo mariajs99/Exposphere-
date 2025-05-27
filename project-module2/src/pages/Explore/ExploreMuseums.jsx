@@ -5,31 +5,35 @@ import MuseumsCards from "./MuseumsCards";
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
 import "../../App.css"
+import axios from "axios";
 
 function ExploreMuseums() {
   const [museos, setMuseos] = useState([]);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
-  console.log(museos)
-  useEffect(() => {
-    fetch("http://localhost:5005/museos")
-      .then((response) => response.json())
-      .then((data) => {
-          console.log(data)
-        setMuseos(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
 
-  const categoriasUnicas = [];
-  museos.forEach((museo) => {
-    if (!categoriasUnicas.includes(museo.categoria)) {
-      categoriasUnicas.push(museo.categoria);
-    }
-  });
+useEffect(() => {
+  getData();
+}, []);
 
-   const museosFiltrados = categoriasSeleccionadas.length === 0
+const getData = async () => {
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/museos`);
+    console.log(response.data);
+    setMuseos(response.data);
+  } catch (error) {
+    console.error("Error al obtener museos:", error);
+  }
+};
+
+const categoriasUnicas = [];
+museos.forEach((museo) => {
+  if (!categoriasUnicas.includes(museo.categoria)) {
+    categoriasUnicas.push(museo.categoria);
+  }
+});
+
+const museosFiltrados =
+  categoriasSeleccionadas.length === 0
     ? museos
     : museos.filter((museo) =>
         categoriasSeleccionadas.includes(museo.categoria)
