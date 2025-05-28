@@ -5,7 +5,7 @@ import MuseumReviews from "./MuseumReviews";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function MuseumDetails () {
+function MuseumDetails ({ museos, setMuseos }) {
 
 const params = useParams();
 const [museo, setMuseo] = useState(null);
@@ -48,7 +48,7 @@ const [opiniones, setOpiniones] = useState(null);
   }
     return(
         <>
-            <MuseumDescription museo={museo}/>
+            <MuseumDescription museo={museo} museos={museos} setMuseos={setMuseos}/>
             <MuseumReviews opiniones={opiniones}/>
             <MuseumAddReview museoId={params.id} actualizarOpiniones={getOpiniones}/>
             
