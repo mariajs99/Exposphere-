@@ -1,10 +1,15 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
 .carrusel-caption {
-  background-color: rgba(
-    219,
-    219,
-    219,
-    0.5
-  );
+  background-color: rgba(219, 219, 219, 0.5);
   padding: 10px 10px;
   border-radius: 10px;
   color: white;
@@ -20,4 +25,38 @@
 
 .sidebar-filters {
   display: flex;
+}
+
+
+.footer-style {
+    background-color: #5e5e5e; 
+  color: white;            
+  text-align: center;   
+  padding: 1rem 0;       
+  border-top: 1px solid #444;
+}
+
+.footer-container {
+  max-width: 960px;
+   margin: 0 auto;
+}
+
+.link-repo {
+  color: #f8f9fa;        
+  text-decoration: none;
+}
+
+.link-repo:hover {
+  color: #ffc107;      
+
+}
+
+.link-aboutus {
+  color: #f8f9fa;        
+  text-decoration: none;
+}
+
+.link-aboutus:hover {
+  color: #ffc107;      
+
 }
