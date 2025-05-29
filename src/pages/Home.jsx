@@ -6,12 +6,12 @@ import "../App.css"
 
 function Home() {
   return (
-    <div className="home-container">
+    <div className="home-container ">
       <div>
         <h1>Exposphere</h1>
-        <h3>Explora los mejores museos y experiencias culturales de España</h3>
+        <h3>Explora los mejores museos de España</h3>
         <p>
-          Descubre exposiciones únicas, consulta reseñas reales y guarda tus planes culturales favoritos en un solo lugar.
+          Descubre exposiciones únicas, consulta reseñas y guarda tus planes culturales favoritos en un solo lugar.
         </p>
       </div>
 

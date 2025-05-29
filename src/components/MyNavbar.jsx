@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from 'react-router-dom';
+import iconLogo from "../assets/icon.png"
 
 function MyNavbar({buscarMuseos, setBuscarMuseos}) {
 
@@ -21,11 +22,10 @@ function MyNavbar({buscarMuseos, setBuscarMuseos}) {
       <Container fluid>
         <Navbar.Brand href="#">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" // reemplaza por tu logo
+            src={iconLogo} 
             alt="Logo"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
+            width="45"
+            className="d-inline-block align-top me-4"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -35,9 +35,9 @@ function MyNavbar({buscarMuseos, setBuscarMuseos}) {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link as={Link} to="/" >Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/explorar">Explorar</Nav.Link>
-            <Nav.Link as={Link} to="/favoritos">Favoritos</Nav.Link>
+            <Nav.Link  className="fs-6 me-4"as={Link} to="/" >Inicio</Nav.Link>
+            <Nav.Link  className="fs-6 me-4"as={Link} to="/explorar" >Explorar</Nav.Link>
+            <Nav.Link  className="fs-6 me-4"as={Link} to="/favoritos" >Favoritos</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -50,7 +50,7 @@ function MyNavbar({buscarMuseos, setBuscarMuseos}) {
             />
             <Button 
             onClick={handleSearchButton}
-            variant="outline-success">Buscar</Button>
+            variant="primary">Buscar</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

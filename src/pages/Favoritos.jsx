@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Card, Col, Row } from "react-bootstrap";
-import "../App.css"
+import "../App.css";
 
 function Favoritos({ museos, setMuseos }) {
   const favoritos = museos.filter((cadaMuseo) => cadaMuseo.favorito);
@@ -33,17 +33,27 @@ function Favoritos({ museos, setMuseos }) {
       ) : (
         <Row className="g-4">
           {favoritos.map((museo) => (
-            <Col key={museo.id} md={4}>
-              <Card className="h-100">
+            <Col
+              key={museo.id}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              className="mb-4 d-flex"
+            >
+              <Card className="h-100 ">
                 <Card.Img
                   className="img-museoCard"
                   variant="top"
                   src={museo.imagen}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column">
                   <Card.Title>{museo.nombre}</Card.Title>
+                  <Card.Text className="flex-grow-1">
+                    {museo.descripcion}
+                  </Card.Text>
                   <Card.Text>{museo.ciudad}</Card.Text>
-                  <Card.Text>{museo.descripcion}</Card.Text>
+                 <div className="botones-favoritos mt-auto d-flex gap-2">
                   <Button
                     as={Link}
                     to={`/detalles/${museo.id}`}
@@ -51,11 +61,13 @@ function Favoritos({ museos, setMuseos }) {
                   >
                     Ver detalles
                   </Button>
-                  <Button 
-                  variant="primary"
-                  onClick={() => eliminarMuseoDeFavoritos(museo.id)}>
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => eliminarMuseoDeFavoritos(museo.id)}
+                  >
                     Eliminar de favoritos
                   </Button>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>

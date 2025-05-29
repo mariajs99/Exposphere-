@@ -22,8 +22,9 @@ function Sidebar(props) {
   };
 
   return (
-    <Card style={{ width: "16rem", padding: "1rem" }}>
-      <Card.Title>Filtrar por categoría</Card.Title>
+    <Card className="sidebar-style">
+
+      <Card.Title className="sidebar-title">Filtrar por categoría</Card.Title>
 
       <Form>
         {props.categorias.map((cadaCategoria) => {
@@ -35,6 +36,7 @@ function Sidebar(props) {
               value={cadaCategoria}
               checked={props.categoriasSeleccionadas.includes(cadaCategoria)}
               onChange={handleCategoriaCheck}
+              className="sidebar-checkbox"
             />
           );
         })}
@@ -42,7 +44,7 @@ function Sidebar(props) {
 
       <hr />
       <Link to="/añadirMuseo">
-        <Button variant="success">Añadir nuevo museo</Button>
+        <Button variant="success" className="orange-button">Añadir nuevo museo</Button>
       </Link>
     </Card>
   );

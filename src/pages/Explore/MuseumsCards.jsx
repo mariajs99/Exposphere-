@@ -3,10 +3,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "../../App.css"
+import "../../App.css";
 
 function MuseumsCards(props) {
-  console.log( props.museos);
+  console.log(props.museos);
 
   /*Creamos aquí cada una de las cartas con .map, 
     y cada una de ellas tienen un botón de ver más info
@@ -18,7 +18,7 @@ function MuseumsCards(props) {
         <p>...Buscando museos que mostrar.</p>
       ) : (
         props.museos.map((cadaMuseo) => (
-          <Col key={cadaMuseo.id} md={4}>
+          <Col key={cadaMuseo.id} xs={6} md={4} className="mb-4">
             <Card className="h-100">
               <Card.Img
                 className="img-museoCard"
@@ -27,8 +27,8 @@ function MuseumsCards(props) {
               />
               <Card.Body>
                 <Card.Title>{cadaMuseo.nombre}</Card.Title>
-                <Card.Text>{cadaMuseo.ciudad}</Card.Text>
                 <Card.Text>{cadaMuseo.descripcion}</Card.Text>
+                <Card.Text>{cadaMuseo.ciudad}</Card.Text>
                 <Button
                   as={Link}
                   to={`/detalles/${cadaMuseo.id}`}
@@ -42,7 +42,7 @@ function MuseumsCards(props) {
         ))
       )}
     </Row>
-  )
+  );
 }
 
 export default MuseumsCards;

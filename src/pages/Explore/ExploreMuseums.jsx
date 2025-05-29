@@ -33,7 +33,7 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
   return (
     <>
       <Container fluid>
-        <Row style={{ margin: "30px" }}>
+        <Row className="p-4 gx-1">
           <Col xs={12} md={3} className="sidebar-filters">
             <Sidebar
               categoriasSeleccionadas={categoriasSeleccionadas}

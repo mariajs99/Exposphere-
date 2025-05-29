@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function MuseumAddReview (props) {
     const [usuario, setUsuario] = useState("");
@@ -34,12 +35,12 @@ function MuseumAddReview (props) {
 };
 
 return(
-    <div className="mt-5">
+    <div>
+      <h3>Añade tu comentario</h3>
       <div className="card shadow p-4">
-        <h4 className="mb-4">Añadir una opinión</h4>
 
         <form onSubmit={handleReviewSubmit}>
-          <div className="mb-3">
+          <div className="mb-4">
             <label className="form-label">Tu nombre</label>
             <input
               type="text"
@@ -78,7 +79,7 @@ return(
             />
           </div>
 
-          <button type="submit" className="btn btn-success w-100">Enviar opinión</button>
+          <Button type="submit" className="btn btn-success w-100">Enviar opinión</Button>
         </form>
       </div>
     </div>

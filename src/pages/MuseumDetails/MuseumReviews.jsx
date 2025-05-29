@@ -28,11 +28,11 @@ function MuseumReviews(props) {
               </Card.Subtitle>
               <Card.Text>{cadaOpinion.comentario}</Card.Text>
               <Button
-                variant="outline-primary"
                 onClick={function () {
                   darLike(index);
                 }}
                 disabled={yaTieneLike}
+                variant="outline-warning"
               >
                 👍 {cantidadDeLikes}
               </Button>
