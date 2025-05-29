@@ -37,6 +37,7 @@ function AddMuseum() {
       })
       .catch((error) => {
         console.log(error);
+        navigate("/error");
       });
   };
   
@@ -109,7 +110,7 @@ function AddMuseum() {
               value={precio}
               onChange={(e) => setPrecio(e.target.value)}
             />
-            
+
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Imagen (URL)</Form.Label>

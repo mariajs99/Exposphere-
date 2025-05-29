@@ -158,6 +158,7 @@ function EditMuseum() {
             />
           </Form.Group>
 
+          <div className="d-flex gap-2">
           <Button variant="primary" type="submit">
             Editar museo
           </Button>
@@ -187,6 +188,7 @@ function EditMuseum() {
               </Button>
             </Modal.Footer>
           </Modal>
+          </div>
         </Form>
       </div>
     </Container>

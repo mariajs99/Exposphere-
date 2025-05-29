@@ -6,11 +6,24 @@ import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
 import "../../App.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
+  const navigate = useNavigate();
+  
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
 
   const textoBusqueda = buscarMuseos.toLowerCase();
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_SERVER_URL}/museos`)
+      .then((res) => setMuseos(res.data))
+      .catch((err) => {
+      console.log(err);
+        navigate("/error");
+      } );
+  }, []);
 
   const categoriasUnicas = [];
   museos.forEach((museo) => {
@@ -19,16 +32,18 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
     }
   });
 
-  const museosFiltradosPorBusqueda = museos.filter((museo) =>
-  museo.nombre.toLowerCase().includes(textoBusqueda) ||
-  museo.ciudad.toLowerCase().includes(textoBusqueda)
-);
+  const museosFiltradosPorBusqueda = museos.filter(
+    (museo) =>
+      museo.nombre.toLowerCase().includes(textoBusqueda) ||
+      museo.ciudad.toLowerCase().includes(textoBusqueda)
+  );
 
-  const museosFiltrados = categoriasSeleccionadas.length === 0
-  ? museosFiltradosPorBusqueda
-  : museosFiltradosPorBusqueda.filter((museo) =>
-      categoriasSeleccionadas.includes(museo.categoria)
-    );
+  const museosFiltrados =
+    categoriasSeleccionadas.length === 0
+      ? museosFiltradosPorBusqueda
+      : museosFiltradosPorBusqueda.filter((museo) =>
+          categoriasSeleccionadas.includes(museo.categoria)
+        );
 
   return (
     <>
@@ -47,7 +62,6 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
               dataMuseos={museos}
               museos={museosFiltrados}
               setMuseos={setMuseos}
-              
             />
           </Col>
         </Row>

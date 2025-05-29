@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
 function MuseumDescription({ museo, museos, setMuseos }) {
+
+  const navigate = useNavigate();
+
   if (!museo) {
     return <p>Cargando detalles del museo...</p>;
   }
@@ -30,6 +33,7 @@ function MuseumDescription({ museo, museos, setMuseos }) {
       })
       .catch((error) => {
         console.log(error);
+        navigate("/error");
       });
   };
 
@@ -38,7 +42,10 @@ function MuseumDescription({ museo, museos, setMuseos }) {
       <h2>{museo.nombre}</h2>
       <div className="info-container">
         <div className="museum-image">
-          <img src={museo.imagen} alt={museo.nombre} className="museum-image" />
+          <img src={museo.imagen || "/404.avif"}
+          alt={museo.nombre} 
+          className="museum-image"
+          />
         </div>
         <div className="museum-info">
           <p>{museo.historia}</p>

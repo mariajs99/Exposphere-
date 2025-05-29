@@ -23,8 +23,9 @@ function MuseumsCards(props) {
               <Card.Img
                 className="img-museoCard"
                 variant="top"
-                src={cadaMuseo.imagen}
+                src={cadaMuseo.imagen || "/404.avif"}
                 style={{ objectFit: "cover", height: "200px" }}
+                
               />
               <Card.Body className="d-flex flex-column justify-content-between">
                 <Card.Title>{cadaMuseo.nombre}</Card.Title>

@@ -12,6 +12,9 @@ import Favoritos from "./pages/Favoritos";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import ServerError from "./pages/ServerError";
+import UnderConstruction from "./pages/UnderConstruction";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [museos, setMuseos] = useState([]);
@@ -52,6 +55,11 @@ function App() {
           <Route path="/detalles/:id/editar" element={<EditMuseum />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/favoritos" element={<Favoritos museos={museos} setMuseos={setMuseos} />} />
+        
+           {/*Rutas de gestión de errores */}
+           <Route path="/error" element={<ServerError/>} />
+           <Route path="/construccion" element={<UnderConstruction/>} />
+           <Route path="*" element={<NotFound/>} />
         </Routes>
       </main>
       <MyFooter />
