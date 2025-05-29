@@ -19,15 +19,6 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
     }
   });
 
-/*  const museosFiltrados =
-    categoriasSeleccionadas.length === 0 ? museos
-      : museos.filter((museo) =>
-          categoriasSeleccionadas.includes(museo.categoria)
-        );
-        
-        */
-
-
   const museosFiltradosPorBusqueda = museos.filter((museo) =>
   museo.nombre.toLowerCase().includes(textoBusqueda) ||
   museo.ciudad.toLowerCase().includes(textoBusqueda)

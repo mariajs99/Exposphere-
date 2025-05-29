@@ -22,8 +22,6 @@ function EditMuseum() {
   const [imagen, setImagen] = useState("");
   const [precio, setPrecio] = useState("");
   const [categoria, setCategoria] = useState("");
-  const [latitud, setLatitud] = useState("");
-  const [longitud, setLongitud] = useState("");
 
   useEffect(() => {
     axios
@@ -39,25 +37,23 @@ function EditMuseum() {
         setImagen(data.imagen || "");
         setPrecio(data.precio || "");
         setCategoria(data.categoria || "");
-        setLatitud(data.latitud || "");
-        setLongitud(data.longitud || "");
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-      const deleteMuseum = () => {
-      axios
-        .delete(`${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`)
-        .then(() => {
-          navigate(`/explorar`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    
+  const deleteMuseum = () => {
+    axios
+      .delete(`${import.meta.env.VITE_SERVER_URL}/museos/${params.id}`)
+      .then(() => {
+        navigate(`/explorar`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -70,10 +66,6 @@ function EditMuseum() {
       imagen,
       precio,
       categoria,
-      ubicacion: {
-        latitud,
-        longitud,
-      },
     };
 
     try {
@@ -85,8 +77,6 @@ function EditMuseum() {
     } catch (error) {
       console.log(error);
     }
-
-
   };
 
   return (
@@ -169,23 +159,6 @@ function EditMuseum() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Latitud</Form.Label>
-            <Form.Control
-              type="text"
-              value={latitud}
-              onChange={(e) => setLatitud(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Longitud</Form.Label>
-            <Form.Control
-              type="text"
-              value={longitud}
-              onChange={(e) => setLongitud(e.target.value)}
-            />
-          </Form.Group>
           <Button variant="primary" type="submit">
             Editar museo
           </Button>

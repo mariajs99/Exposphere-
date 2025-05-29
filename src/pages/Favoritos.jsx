@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import "../App.css"
 
-function Favoritos ({museos, setMuseos}) {
-
-  const favoritos = museos.filter((cadaMuseo) => cadaMuseo.favorito)
+function Favoritos({ museos, setMuseos }) {
+  const favoritos = museos.filter((cadaMuseo) => cadaMuseo.favorito);
 
   const eliminarMuseoDeFavoritos = (idDelMuseo) => {
     axios
@@ -11,7 +12,6 @@ function Favoritos ({museos, setMuseos}) {
         favorito: false,
       })
       .then(() => {
-        // Actualizamos el estado en el frontend
         const nuevaListaDeMuseos = museos.map((cadaMuseo) => {
           if (cadaMuseo.id === idDelMuseo) {
             return { ...cadaMuseo, favorito: false };
@@ -22,30 +22,48 @@ function Favoritos ({museos, setMuseos}) {
         setMuseos(nuevaListaDeMuseos);
       })
       .catch((error) => {
-        console.error("Error al eliminar de favoritos:", error);
+        console.error(error);
       });
   };
-    return(
-
-        <div>
+  return (
+    <div>
       <h2>Museos Favoritos</h2>
       {favoritos.length === 0 ? (
-        <p>Aún no has añadido ningún museo a favoritos.</p>
+        <p>Aún no hay museos en favoritos.</p>
       ) : (
-        <ul>
+        <Row className="g-4">
           {favoritos.map((museo) => (
-            <li key={museo.id} >
-              <h3>{museo.nombre}</h3>
-              <img src={museo.imagen} style={{ width: "200px" }} />
-              <p>{museo.ciudad}</p>
-              <Link to={`/detalles/${museo.id}`}>Ver detalles</Link>
-              <button onClick={() => eliminarMuseoDeFavoritos(museo.id)}>Eliminar de favoritos</button>
-            </li>
+            <Col key={museo.id} md={4}>
+              <Card className="h-100">
+                <Card.Img
+                  className="img-museoCard"
+                  variant="top"
+                  src={museo.imagen}
+                />
+                <Card.Body>
+                  <Card.Title>{museo.nombre}</Card.Title>
+                  <Card.Text>{museo.ciudad}</Card.Text>
+                  <Card.Text>{museo.descripcion}</Card.Text>
+                  <Button
+                    as={Link}
+                    to={`/detalles/${museo.id}`}
+                    variant="primary"
+                  >
+                    Ver detalles
+                  </Button>
+                  <Button 
+                  variant="primary"
+                  onClick={() => eliminarMuseoDeFavoritos(museo.id)}>
+                    Eliminar de favoritos
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </ul>
+        </Row>
       )}
     </div>
-    )
+  );
 }
 
 export default Favoritos;

@@ -14,8 +14,6 @@ function AddMuseum() {
   const [horario, setHorario] = useState("");
   const [imagen, setImagen] = useState("");
   const [precio, setPrecio] = useState("");
-  const [latitud, setLatitud] = useState("");
-  const [longitud, setLongitud] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,10 +27,6 @@ function AddMuseum() {
       horario,
       imagen,
       precio,
-      ubicacion: {
-        lat: latitud,
-        lng: longitud,
-      },
     };
 
     axios
@@ -121,24 +115,6 @@ function AddMuseum() {
             name="precio"
             value={precio}
             onChange={(e) => setPrecio(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Latitud</Form.Label>
-          <Form.Control
-            type="text"
-            value={latitud}
-            onChange={(e) => setLatitud(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Longitud</Form.Label>
-          <Form.Control
-            type="text"
-            value={longitud}
-            onChange={(e) => setLongitud(e.target.value)}
           />
         </Form.Group>
 
