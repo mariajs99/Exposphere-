@@ -80,9 +80,9 @@ function EditMuseum() {
   };
 
   return (
-    <div className="EditMuseumPage">
-      <Container className="mt-4">
-        <h3>Editar museo</h3>
+    <Container className="mt-4">
+      <div className="form-inline-container">
+        <h2>Editar museo</h2>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Nombre</Form.Label>
@@ -141,21 +141,20 @@ function EditMuseum() {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Imagen (URL)</Form.Label>
-            <Form.Control
-              type="text"
-              value={imagen}
-              onChange={(e) => setImagen(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
             <Form.Label>Precio</Form.Label>
             <Form.Control
               type="text"
               name="precio"
               value={precio}
               onChange={(e) => setPrecio(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Imagen (URL)</Form.Label>
+            <Form.Control
+              type="text"
+              value={imagen}
+              onChange={(e) => setImagen(e.target.value)}
             />
           </Form.Group>
 
@@ -189,8 +188,8 @@ function EditMuseum() {
             </Modal.Footer>
           </Modal>
         </Form>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }
 

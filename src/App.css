@@ -181,6 +181,7 @@ width: 500px;
   gap: 10px;
   margin-top: 20px;
 }
+
 /*Comentarios*/
 .review-container {
   display: flex;
@@ -199,6 +200,31 @@ width: 500px;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
+
+/*Formulario de crear museo*/
+.form-inline-container {
+  background-color: #fefbf5;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-inline-container h2 {
+  margin-bottom: 30px;
+  color: var(--color-rojo-oscuro);
+}
+
+/*Pagina de favoritos*/
+.fav-container {
+  margin: 30px;
+}
+
+.fav-container h2{
+  margin-bottom: 30px;
+  color: var(--color-rojo-oscuro);
+}
+
 /*FOOTER*/
 
 .footer-style {

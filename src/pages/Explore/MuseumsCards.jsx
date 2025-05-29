@@ -18,14 +18,15 @@ function MuseumsCards(props) {
         <p>...Buscando museos que mostrar.</p>
       ) : (
         props.museos.map((cadaMuseo) => (
-          <Col key={cadaMuseo.id} xs={6} md={4} className="mb-4">
+          <Col key={cadaMuseo.id}  xs={12} sm={6} md={4}>
             <Card className="h-100">
               <Card.Img
                 className="img-museoCard"
                 variant="top"
                 src={cadaMuseo.imagen}
+                style={{ objectFit: "cover", height: "200px" }}
               />
-              <Card.Body>
+              <Card.Body className="d-flex flex-column justify-content-between">
                 <Card.Title>{cadaMuseo.nombre}</Card.Title>
                 <Card.Text>{cadaMuseo.descripcion}</Card.Text>
                 <Card.Text>{cadaMuseo.ciudad}</Card.Text>
@@ -33,6 +34,7 @@ function MuseumsCards(props) {
                   as={Link}
                   to={`/detalles/${cadaMuseo.id}`}
                   variant="primary"
+                  className="mt-2 w-auto align-self-start"
                 >
                   Ver detalles
                 </Button>

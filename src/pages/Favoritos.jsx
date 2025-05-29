@@ -26,7 +26,7 @@ function Favoritos({ museos, setMuseos }) {
       });
   };
   return (
-    <div>
+    <div className="fav-container">
       <h2>Museos Favoritos</h2>
       {favoritos.length === 0 ? (
         <p>Aún no hay museos en favoritos.</p>
@@ -39,9 +39,9 @@ function Favoritos({ museos, setMuseos }) {
               sm={6}
               md={4}
               lg={3}
-              className="mb-4 d-flex"
+              className="d-flex"
             >
-              <Card className="h-100 ">
+              <Card className="h-100 w-100">
                 <Card.Img
                   className="img-museoCard"
                   variant="top"
@@ -53,20 +53,21 @@ function Favoritos({ museos, setMuseos }) {
                     {museo.descripcion}
                   </Card.Text>
                   <Card.Text>{museo.ciudad}</Card.Text>
-                 <div className="botones-favoritos mt-auto d-flex gap-2">
-                  <Button
-                    as={Link}
-                    to={`/detalles/${museo.id}`}
-                    variant="primary"
-                  >
-                    Ver detalles
-                  </Button>
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => eliminarMuseoDeFavoritos(museo.id)}
-                  >
-                    Eliminar de favoritos
-                  </Button>
+
+                  <div className="botones-favoritos d-flex gap-2 mt-3 align-self-start">
+                    <Button
+                      as={Link}
+                      to={`/detalles/${museo.id}`}
+                      variant="primary"
+                    >
+                      Ver detalles
+                    </Button>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => eliminarMuseoDeFavoritos(museo.id)}
+                    >
+                      Eliminar de favoritos
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
