@@ -3,9 +3,19 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function MyNavbar() {
+function MyNavbar({buscarMuseos, setBuscarMuseos}) {
+
+  const navigate = useNavigate()
+  
+  const handleInputChange = (event) => {
+    setBuscarMuseos(event.target.value)
+  }
+
+  const handleSearchButton = () => {
+    navigate(`/explorar/`)
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -32,11 +42,15 @@ function MyNavbar() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Buscar"
+              placeholder="Buscar por nombre o ciudad..."
+              value={buscarMuseos}
               className="me-2"
               aria-label="Search"
+              onChange={handleInputChange}
             />
-            <Button variant="outline-success">Buscar</Button>
+            <Button 
+            onClick={handleSearchButton}
+            variant="outline-success">Buscar</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

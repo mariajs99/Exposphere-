@@ -16,6 +16,8 @@ import axios from "axios";
 function App() {
   const [museos, setMuseos] = useState([]);
 
+  const [buscarMuseos, setBuscarMuseos] = useState("");
+
   useEffect(() => {
     getData();
   }, []);
@@ -34,13 +36,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <MyNavbar />
+      <MyNavbar buscarMuseos={buscarMuseos} setBuscarMuseos={setBuscarMuseos}/>
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
             path="/explorar"
-            element={<ExploreMuseums museos={museos} setMuseos={setMuseos} />}
+            element={<ExploreMuseums museos={museos} setMuseos={setMuseos} buscarMuseos={buscarMuseos} setBuscarMuseos={setBuscarMuseos} />}
           />
           <Route
             path="/detalles/:id"

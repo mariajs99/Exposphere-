@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import "../../App.css";
 import axios from "axios";
 
-function ExploreMuseums({ museos, setMuseos }) {
+function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
+
+  const textoBusqueda = buscarMuseos.toLowerCase();
 
   const categoriasUnicas = [];
   museos.forEach((museo) => {
@@ -17,12 +19,25 @@ function ExploreMuseums({ museos, setMuseos }) {
     }
   });
 
-  const museosFiltrados =
-    categoriasSeleccionadas.length === 0
-      ? museos
+/*  const museosFiltrados =
+    categoriasSeleccionadas.length === 0 ? museos
       : museos.filter((museo) =>
           categoriasSeleccionadas.includes(museo.categoria)
         );
+        
+        */
+
+
+  const museosFiltradosPorBusqueda = museos.filter((museo) =>
+  museo.nombre.toLowerCase().includes(textoBusqueda) ||
+  museo.ciudad.toLowerCase().includes(textoBusqueda)
+);
+
+  const museosFiltrados = categoriasSeleccionadas.length === 0
+  ? museosFiltradosPorBusqueda
+  : museosFiltradosPorBusqueda.filter((museo) =>
+      categoriasSeleccionadas.includes(museo.categoria)
+    );
 
   return (
     <>
@@ -41,6 +56,7 @@ function ExploreMuseums({ museos, setMuseos }) {
               dataMuseos={museos}
               museos={museosFiltrados}
               setMuseos={setMuseos}
+              
             />
           </Col>
         </Row>
