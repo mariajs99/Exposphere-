@@ -19,7 +19,7 @@ function MuseumsCards(props) {
       ) : (
         props.museos.map((cadaMuseo) => (
           <Col key={cadaMuseo.id}  xs={12} sm={6} md={4}>
-            <Card className="h-100">
+            <Card className="h-100 museum-card">
               <Card.Img
                 className="img-museoCard"
                 variant="top"

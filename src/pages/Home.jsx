@@ -25,8 +25,8 @@ function Home() {
             style={{ maxHeight: "600px", objectFit: "cover" }}
           />
           <Carousel.Caption className="carrusel-caption">
-            <h5>Museos que inspiran</h5>
-            <p>Encuentra los espacios culturales más fascinantes del país.</p>
+            <h5>Explora museos únicos</h5>
+            <p>Consulta espacios culturales recomendados por la comunidad</p>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -37,8 +37,8 @@ function Home() {
           style={{ maxHeight: "600px", objectFit: "cover" }}
           />
           <Carousel.Caption className="carrusel-caption"> 
-            <h5>Exposiciones para todos los gustos</h5>
-            <p>Historia, ciencia, arte... Filtra y encuentra lo que más te gusta.</p>
+            <h5>Encuentra lo que más te interesa</h5>
+            <p>Historia, arte, ciencia y más, organizados por temática</p>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -51,7 +51,7 @@ function Home() {
           <Carousel.Caption className="carrusel-caption">
             <h5>Planifica tu próxima visita</h5>
             <p>
-              Consulta opiniones, puntuaciones y guarda tus favoritos.
+              Crea tu lista de favoritos y accede a ella cuando la necesites
             </p>
           </Carousel.Caption>
         </Carousel.Item>

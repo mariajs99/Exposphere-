@@ -2,6 +2,26 @@ body {
   background-color: var(--color-beige) !important;
 }
 
+p {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Slab", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-rojo-oscuro) ;
+}
+
 .main-content {
   flex-grow: 1;
 }
@@ -29,13 +49,12 @@ body {
 /*BOTONES BORRAR y FAV*/
 .btn-outline-primary {
   --bs-btn-color: #fff !important;
-    --bs-btn-bg: #dc3545 !important;
-    --bs-btn-border-color: #dc3545 !important;
-    --bs-btn-hover-color: #bb2d3b !important;
-    --bs-btn-hover-bg: #fff !important;
-    --bs-btn-hover-border-color: #b02a37 !important;
-    --bs-btn-focus-shadow-rgb: 225, 83, 97 !important;
-
+  --bs-btn-bg: #dc3545 !important;
+  --bs-btn-border-color: #dc3545 !important;
+  --bs-btn-hover-color: #bb2d3b !important;
+  --bs-btn-hover-bg: #fff !important;
+  --bs-btn-hover-border-color: #b02a37 !important;
+  --bs-btn-focus-shadow-rgb: 225, 83, 97 !important;
 }
 
 /*NAVBAR*/
@@ -80,11 +99,12 @@ body {
 }
 
 .carousel-caption {
-  background-color: rgba(254, 249, 225, 0.467);
+  background-color: rgba(251, 233, 203, 0.744);
   border-radius: 8px;
   padding: 10px 16px;
-  max-width: 80%;
+  max-width: 40%;
   margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-caption h5 {
@@ -96,7 +116,7 @@ body {
 
 .carousel-caption p {
   font-size: 0.85rem;
-  color: rgb(122, 95, 60);
+  color: black;
   margin-bottom: 0;
 }
 
@@ -110,7 +130,7 @@ body {
 /*Sidebar*/
 .sidebar-style {
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   padding: 1.5rem;
   background-color: var(--color-claro) !important;
   border: 1px solid #e5d0ac;
@@ -142,6 +162,12 @@ body {
   --bs-btn-hover-border-color: var(--color-naranja) !important;
 }
 
+/*Carta de museo */
+
+.museum-card {
+  background-color: var(--color-claro) !important;
+}
+
 /*DETALLES DEL MUSEO*/
 .museum-container {
   margin: 20px;
@@ -152,24 +178,20 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-
-  
 }
 
 .museum-container h2 {
   margin: 40px 0 40px 0;
-
+  color: var(--color-rojo-oscuro) !important;
 }
+
 .info-container {
   display: flex;
- flex-wrap: nowrap;
+  flex-wrap: nowrap;
   gap: 20px;
   align-items: flex-start;
 }
 
-.museum-image {
-width: 500px;
-}
 
 .museum-info {
   margin-left: 30px;
@@ -220,8 +242,17 @@ width: 500px;
   margin: 30px;
 }
 
-.fav-container h2{
+.fav-container h2 {
   margin-bottom: 30px;
+  color: var(--color-rojo-oscuro);
+}
+
+/*Aboutus*/
+.about-h1 {
+  color: var(--color-rojo-oscuro);
+}
+
+.about-h2 {
   color: var(--color-rojo-oscuro);
 }
 

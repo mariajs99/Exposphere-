@@ -3,7 +3,6 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 
 function MuseumDescription({ museo, museos, setMuseos }) {
-
   const navigate = useNavigate();
 
   if (!museo) {
@@ -29,7 +28,6 @@ function MuseumDescription({ museo, museos, setMuseos }) {
             : cadaMuseo
         );
         setMuseos(museosActualizados);
-        console.log("Favorito actualizado");
       })
       .catch((error) => {
         console.log(error);
@@ -41,10 +39,20 @@ function MuseumDescription({ museo, museos, setMuseos }) {
     <div className=" bg-body-tertiary museum-container">
       <h2>{museo.nombre}</h2>
       <div className="info-container">
-        <div className="museum-image">
-          <img src={museo.imagen || "/404.avif"}
-          alt={museo.nombre} 
+        <div
           className="museum-image"
+          style={{
+            width: "600px",
+            height: "300px",
+            overflow: "hidden",
+            borderRadius: "0.5rem",
+          }}
+        >
+          <img
+            src={museo.imagen || "/404.avif"}
+            alt={museo.nombre}
+            className="img-fluid w-100 h-100"
+            style={{ objectFit: 'cover' }}
           />
         </div>
         <div className="museum-info">
