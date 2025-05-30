@@ -45,7 +45,7 @@ function Favoritos({ museos, setMuseos }) {
                 <Card.Img
                   className="img-museoCard"
                   variant="top"
-                  src={museo.imagen}
+                  src={museo.imagen || "/404.avif"}
                 />
                 <Card.Body className="d-flex flex-column">
                   <Card.Title>{museo.nombre}</Card.Title>
