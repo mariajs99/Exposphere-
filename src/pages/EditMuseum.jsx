@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 function EditMuseum() {
   const [showModal, setShowModal] = useState(false);
 
+  //modal para preguntar si se está seguro de borrar museo
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 

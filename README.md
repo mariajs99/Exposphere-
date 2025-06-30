@@ -31,11 +31,8 @@ Exposphere is a web platform to discover, rate, create and save your favorite mu
 <ul>
 <li>Museum map view with geolocation</li>
 <li>Filters by city, rating, or price</li>
-<li>Total accessibility improvements for screen readers and usability</li>
-<li>Add spinners to loading screens</li>
-<li>Calculate the average score of museums based on the scores given by users in the comments.</li>
+<li>Total accessibility improvements for screen readers and usability (for now its functional)</li>
 <li>Create a counter for comment likes, which calculates how many likes the comment has received in total.</li>
-<li>force the completion of all form fields</li>
 </ul>
 
 # Client Structure

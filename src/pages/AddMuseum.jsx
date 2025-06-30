@@ -62,6 +62,7 @@ function AddMuseum() {
               type="text"
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
+              required
             />
           </Form.Group>
 
@@ -81,6 +82,7 @@ function AddMuseum() {
               value={historia}
               onChange={(e) => setHistoria(e.target.value)}
               rows={4}
+              required
             />
           </Form.Group>
 
@@ -90,6 +92,7 @@ function AddMuseum() {
               type="text"
               value={ciudad}
               onChange={(e) => setCiudad(e.target.value)}
+              required
             />
           </Form.Group>
 

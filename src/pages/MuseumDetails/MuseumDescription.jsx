@@ -1,16 +1,26 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 
 function MuseumDescription({ museo, museos, setMuseos }) {
   const navigate = useNavigate();
 
   if (!museo) {
-    return <p>Cargando detalles del museo...</p>;
+    return (
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "200px" }}>
+      <Spinner animation="border" role="status" variant="primary">
+        <span className="visually-hidden">Cargando...</span>
+      </Spinner>
+    </div>
+  );
   }
 
+  // Comprueba si el museo está marcado como favorito en el estado global 'museos'
+  // Esto permite controlar el botón de favoritos y evitar duplicados
   const museoEnFavoritos =
     museos.find((m) => m.id === museo.id)?.favorito === true;
+
   //Busca el museo en el array museos que tenga el mismo id que
   // el museo actual.
   // Si lo encuentra, mira si su propiedad favorito es true.
@@ -22,6 +32,7 @@ function MuseumDescription({ museo, museos, setMuseos }) {
         favorito: true,
       })
       .then(() => {
+      // Actualiza la lista de museos localmente para reflejar el cambio sin recargar
         const museosActualizados = museos.map((cadaMuseo) =>
           cadaMuseo.id === museo.id
             ? { ...cadaMuseo, favorito: true }

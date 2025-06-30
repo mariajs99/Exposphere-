@@ -2,9 +2,9 @@ import "../App.css";
 
 function AboutUs() {
   return (
-    <div  className="container py-5" style={{ textAlign: 'justify' }}>
+    <div className="container py-5" style={{ textAlign: "justify" }}>
       <h1 className="about-h1 mb-4">Sobre Exposphere</h1>
-      <p className="mb-3">
+      <p className="mb-3" >
         Exposphere es una página web pensada para los amantes de la cultura.
         Aquí puedes descubrir museos de toda España, explorarlos por categorías
         y crear nuevas entradas sobre aquellos museos en los que hayas estado y
@@ -71,11 +71,12 @@ function AboutUs() {
               className="me-2"
             />
             <a
+              href="https://www.linkedin.com/in/mariadelmarjs/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-decoration-none fw-bold link-secondary"
+              className="text-decoration-none fw-bold link-dark"
             >
-              LinkedIn (próximamente)
+              Linkedin
             </a>
           </li>
         </ul>

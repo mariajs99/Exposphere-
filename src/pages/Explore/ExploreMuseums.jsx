@@ -8,9 +8,10 @@ import "../../App.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
+function ExploreMuseums({ museos, setMuseos, buscarMuseos }) {
   const navigate = useNavigate();
   
+    // Estado local para guardar las categorías seleccionadas en los filtros
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
 
   const textoBusqueda = buscarMuseos.toLowerCase();
@@ -25,6 +26,7 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
       } );
   }, []);
 
+  // Obtener categorías únicas a partir de los museos
   const categoriasUnicas = [];
   museos.forEach((museo) => {
     if (!categoriasUnicas.includes(museo.categoria)) {
@@ -38,6 +40,7 @@ function ExploreMuseums({ museos, setMuseos, buscarMuseos, setBuscarMuseos }) {
       museo.ciudad.toLowerCase().includes(textoBusqueda)
   );
 
+  // Si hay categorías seleccionadas, filtrar también por esas categorías
   const museosFiltrados =
     categoriasSeleccionadas.length === 0
       ? museosFiltradosPorBusqueda

@@ -4,15 +4,19 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 function Sidebar(props) {
+
+  // Maneja el cambio al seleccionar/deseleccionar una categoría
   const handleCategoriaCheck = (event) => {
     const categoria = event.target.value;
 
     if (event.target.checked) {
+      // Si se marca el checkbox, se añade la categoría al array de seleccionadas
       props.setCategoriasSeleccionadas([
         ...props.categoriasSeleccionadas,
         categoria,
       ]);
     } else {
+      // Si se desmarca, se elimina la categoría del array de seleccionadas
       props.setCategoriasSeleccionadas(
         props.categoriasSeleccionadas.filter(
           (cadaCategoria) => cadaCategoria !== categoria
